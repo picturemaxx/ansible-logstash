@@ -13,4 +13,4 @@
   service:
     name: logstash
     state: started
-    enabled: {{ logstash_enabled_on_boot }}
+    enabled: "{{ logstash_enabled_on_boot }}"
