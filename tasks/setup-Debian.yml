@@ -10,15 +10,19 @@
     state: present
 
 - name: Check if Logstash is already installed.
-  stat: path=/etc/init.d/logstash
+  stat:
+    path: /etc/init.d/logstash
   register: logstash_installed
 
 - name: Update apt cache if repository just added.
-  apt: update_cache=yes
+  apt: 
+    update_cache: yes
   when: logstash_installed.stat.exists == false
 
 - name: Install Logstash.
-  apt: pkg=logstash state=present
+  apt:
+    pkg: logstash
+    state: present
 
 - name: Add Logstash user to adm group (Debian).
   user:
