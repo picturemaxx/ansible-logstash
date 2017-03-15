@@ -30,10 +30,18 @@
     pkg: logstash
     state: present
 
+- name: Add Logstash user to adm group (Debian) 14.04.
+  user:
+    name: logstash
+    group: logstash
+    groups: adm
+  when: ansible_os_family == "Debian" and ansible_distribution_version ==  "14.04"
+  notify: restart logstash 14.04
+
 - name: Add Logstash user to adm group (Debian).
   user:
     name: logstash
     group: logstash
     groups: adm
-  when: ansible_os_family == "Debian"
+  when: ansible_os_family == "Debian" and ansible_distribution_version !=  "14.04"
   notify: restart logstash
