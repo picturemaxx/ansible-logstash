@@ -1,7 +1,4 @@
 ---
-- name: restart logstash 14.04
-  command: restart logstash
-
 - name: restart logstash
   service:
     name: logstash
