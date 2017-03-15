@@ -17,7 +17,7 @@
 
 - name: Check if Logstash is already installed.
   stat:
-    path: /etc/init.d/logstash
+    path: /usr/share/logstash
   register: logstash_installed
 
 - name: Update apt cache if repository just added.
